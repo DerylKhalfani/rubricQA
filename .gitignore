@@ -6,8 +6,10 @@ dist/
 wheels/
 *.egg-info
 docs
-data/
 
 # Virtual environments
 .venv
 CONTEXT.md
+
+data/abcd_v1.1.json
+data/abcd_pretty.json
