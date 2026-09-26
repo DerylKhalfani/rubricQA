@@ -7,7 +7,10 @@ authors = [
     { name = "Muhammad Derylian Khalfani", email = "mderylkhalfani@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "numpy>=2.5.3",
+    "pandas>=3.0.6",
+]
 
 [project.scripts]
 autoqa = "autoqa:main"
@@ -15,3 +18,8 @@ autoqa = "autoqa:main"
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+]
