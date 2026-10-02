@@ -28,3 +28,15 @@
 {"convo_id": 1063, "criterion": "bad_news_handled", "verdict": "NOT_APPLICABLE", "reason": "agent did not refuse nor give unfavourable result", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-09-30T21:46:09+00:00"}
 {"convo_id": 1063, "criterion": "closing_check", "verdict": "PASS", "reason": "turn 18", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-09-30T21:46:09+00:00"}
 {"convo_id": 1063, "criterion": "respectful_tone", "verdict": "PASS", "reason": "", "unsure": true, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-09-30T21:46:09+00:00"}
+{"convo_id": 2391, "criterion": "identity_verified", "verdict": "NOT_APPLICABLE", "reason": "guideline didnt require any customer verification", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T16:10:43+00:00"}
+{"convo_id": 2391, "criterion": "policy_followed", "verdict": "NOT_APPLICABLE", "reason": "guideline didn't any decision on customer's situation", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T16:10:43+00:00"}
+{"convo_id": 2391, "criterion": "outcome_communicated", "verdict": "PASS", "reason": "yes, turn 5,9", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T16:10:43+00:00"}
+{"convo_id": 2391, "criterion": "bad_news_handled", "verdict": "PASS", "reason": "customer somehow didn't got the result, and agent did apologized in turn 9", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T16:10:43+00:00"}
+{"convo_id": 2391, "criterion": "closing_check", "verdict": "PASS", "reason": "turn 11", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T16:10:43+00:00"}
+{"convo_id": 2391, "criterion": "respectful_tone", "verdict": "PASS", "reason": "", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T16:10:43+00:00"}
+{"convo_id": 4047, "criterion": "identity_verified", "verdict": "PASS", "reason": "turn 6, 13, 19", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T17:57:21+00:00"}
+{"convo_id": 4047, "criterion": "policy_followed", "verdict": "NOT_APPLICABLE", "reason": "guideline didnt need customer situation", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T17:57:21+00:00"}
+{"convo_id": 4047, "criterion": "outcome_communicated", "verdict": "PASS", "reason": "turn 25", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T17:57:21+00:00"}
+{"convo_id": 4047, "criterion": "bad_news_handled", "verdict": "NOT_APPLICABLE", "reason": "no unfavourable result", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T17:57:21+00:00"}
+{"convo_id": 4047, "criterion": "closing_check", "verdict": "PASS", "reason": "turn 25", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T17:57:21+00:00"}
+{"convo_id": 4047, "criterion": "respectful_tone", "verdict": "PASS", "reason": "", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-02T17:57:21+00:00"}
