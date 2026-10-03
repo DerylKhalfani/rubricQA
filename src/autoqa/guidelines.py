@@ -75,8 +75,3 @@ def guideline_key(flow: str, subflow: str) -> tuple[str, str] | None:
         topic = subflow.split("_")[0]
         return (FAQ_FLOWS[flow], FAQ_PREFIXES[flow][topic]) if topic in FAQ_PREFIXES[flow] else None
     return SUBFLOW_MAP.get((flow, subflow))
-
-
-def load_guidelines() -> dict:
-    with open(GUIDELINES_PATH) as f:
-        return json.load(f)
