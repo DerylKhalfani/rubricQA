@@ -1,14 +1,14 @@
 import json
 import re
 from pathlib import Path
-from autoqa.guidelines import GUIDELINES_PATH, SUBFLOW_MAP, guideline_key
+from autoqa.guidelines import GUIDELINES_PATH, guideline_key
 
 ### Grade v.0
 ROOT = Path(__file__).resolve().parents[2]
 LABELS_PATH = ROOT / "data" / "golden" / "labels_v0.1.jsonl"
 RAW_PATH = ROOT / "data" / "abcd_pretty.json"
 RUBRIC_PATH = ROOT / "rubric.md"
-
+GUIDELINES_PATH = ROOT / "data" / "guidelines.json"
 
 def load_label(LABELS_PATH: str) -> dict[dict[dict]]:
     # Loading the golden label
@@ -61,7 +61,7 @@ def load_conversation(RAW_PATH: str, convo_id: int):
             for convo in set_value:
 
                 if convo["convo_id"] == convo_id:
-                    conversation += f"==Conversation: {convo_id}==\n"
+                    conversation += f"==== Conversation: {convo_id} ====\n"
 
                     for speaker, text in convo["original"]:
                         conversation += f"{speaker}: {text}\n"
@@ -91,7 +91,7 @@ def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str):
     # print(actions)
     # print("\n")
     # print(instructions)
-    actions_instructions_prompt = f"== Guidelines: {flow} / {subflow} ==\n"
+    actions_instructions_prompt = f"==== Guidelines: {flow} / {subflow} ====\n"
     instruction_prompt = "\n".join(instructions)
     actions_instructions_prompt += f"{instruction_prompt}\n\nSteps:\n"
 
@@ -143,16 +143,58 @@ def load_rubric() -> tuple[str, list[dict]]:
     return m.group(1), criteria
 
 
-# conversation, flow, subflow = load_conversation(RAW_PATH, 6689)
+RUBRIC_LABELS = {
+    "name": "Criterion",
+    "question": "Question",
+    "pass": "Pass",
+    "fail": "Fail",
+    "na": "N/A",
+    "note": "Note",
+}
 
-# print(conversation)
-# print(flow)
-# print(subflow)
 
-# actions_instructions_prompt = load_guideline(GUIDELINES_PATH, flow, subflow)
+def load_rubric_into_text(rubrics: list[dict]) -> str:
 
-# print(actions_instructions_prompt)
-test, test1 = load_rubric()
+    rubric_text = "==== Rubric ====\n"
 
-print(test1[0])
-print("\n")
+
+    for rubric in rubrics:
+        for key, text in rubric.items():
+
+            # skip empty fields, e.g. criteria without a note
+            if text == "":
+                continue
+
+            rubric_text += f"{RUBRIC_LABELS[key]}: {text}\n"
+        rubric_text += "\n"
+
+    return rubric_text
+
+
+def load_input_prompt(conversation: str, guideline: str, rubric: str):
+
+    input_prompt = f"{conversation}\n{guideline}\n{load_rubric_into_text(rubric)}"
+
+    return input_prompt
+
+
+if __name__ == "__main__":
+
+    conversation, flow, subflow = load_conversation(RAW_PATH, 6689)
+
+    # print(conversation)
+    # print(flow)
+    # print(subflow)
+
+    guideline = load_guideline(GUIDELINES_PATH, flow, subflow)
+
+    # print(actions_instructions_prompt)
+    # test, test1 = load_rubric()
+
+    # print(test1[0])
+    # print("\n")
+
+    _, rubric = load_rubric()
+
+    prompt = load_input_prompt(conversation, guideline, rubric)
+    print(prompt)

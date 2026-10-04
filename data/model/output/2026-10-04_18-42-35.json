@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "prompt_version": "model_prompt_v0"
+  },
+  "results": [
+    {
+      "convo_id": 6689,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "Account was pulled up and 3 of 4 identity items (full name Joyce Wu, zip 59590, phone 531-051-3279) were provided; verification occurred before disclosing the username."
+        },
+        "policy_followed": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No policy rules in this subflow depend on membership, dates, or shipping; this is a username recovery flow; no applicable policy condition to check."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "The agent clearly stated the result: the username jwu1 was provided to the customer."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable news or refusals occurred."
+        },
+        "closing_check": {
+          "verdict": "FAIL",
+          "reason": "No follow-up question was asked after resolving the request; customer had indicated they needed nothing else, but agent did not confirm."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Interaction was polite and professional throughout; no rude remarks."
+        }
+      }
+    },
+    {
+      "convo_id": 3297,
+      "grade": {
+        "identity_verified": {
+          "verdict": "FAIL",
+          "reason": "Not enough identity items collected: only name and username provided; 3 of 4 required by the subflow, so verification wasn\u2019t completed before actions."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Followed the promo-resolution flow: pulled account, checked timing, queried system, and issued a new 20% code."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Explained actions and provided the new promo code; customer acknowledged."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavorable outcome requiring apology beyond troubleshooting."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if the customer needed anything else after handling."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite, apologetic, and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 4502,
+      "grade": {
+        "identity_verified": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No Verify Identity step in this subflow; agent did not request identity verification."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Agent followed Troubleshoot Site steps 1 and 2 (Try Again, Log Out/In) to resolve invalid card."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Agent communicated resolution: order went through; expressed satisfaction."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No bad news or refusal was given."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Agent asked if more help was needed after resolution."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite, apologetic, and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 465,
+      "grade": {
+        "identity_verified": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "The FAQ flow has no Verify Identity step; no identity checks were performed or needed."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Used the Timing/FAQ to answer; provided the correct collection start date."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Stated the result plainly: fall collection begins October 3rd; offered further help."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavorable outcome or refusal occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asks if customer needs anything else after addressing the request."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite, friendly, and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 1063,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "Account ID and Order ID were provided and identity verification was initiated before sharing account details."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Retrieved status, disclosed the amount due ($49) and due date, and sent the payment link per flow."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Clearly stated the amount due and that a payment link was sent to the customer."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable outcome or refusal occurred in this interaction."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if the customer needed anything else after handling the request."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite, respectful, and professional throughout the conversation."
+        }
+      }
+    },
+    {
+      "convo_id": 2391,
+      "grade": {
+        "identity_verified": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "Subflow has no Verify Identity step; no account handling required."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Used jacket FAQ flow; provided correct hood-removal info; no policy restrictions breached."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Explained the hood detail in plain terms and confirmed understanding."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No bad-news or refusals occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if customer needed anything else after addressing the request."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Maintained polite, professional tone throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 4047,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "Account pulled up for the name; collected ZIP, phone, and PIN; identity verified before updating payment."
+        },
+        "policy_followed": {
+          "verdict": "FAIL",
+          "reason": "Did not confirm shipping status (Order Received/In Transit) before changing payment method."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Informed customer that payment method was updated and asked if more help was needed."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable outcome occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if the customer needed anything else after handling the request."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite and professional throughout."
+        }
+      }
+    }
+  ]
+}
