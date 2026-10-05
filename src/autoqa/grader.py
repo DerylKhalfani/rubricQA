@@ -20,7 +20,7 @@ LABELS_PATH = ROOT / "data" / "golden" / "labels_v0.1.jsonl"
 RAW_PATH = ROOT / "data" / "abcd_pretty.json"
 RUBRIC_PATH = ROOT / "rubric.md"
 GUIDELINES_PATH = ROOT / "data" / "guidelines.json"
-FILE_PATH = ROOT / "data" / "model" / "output"
+OUTPUT_PATH = ROOT / "data" / "model" / "output"
 
 
 # One criterion
@@ -81,5 +81,5 @@ for convo_id in grouping_label:
 output_list = {"metadata": {"prompt_version": "model_prompt_v0"}, "results" : response_list}
 
 # Upload to a file to be inspect/examined
-with open(f"{FILE_PATH}/{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.json", "w") as f:
+with open(f"{OUTPUT_PATH}/{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.json", "w") as f:
     json.dump(output_list, f, indent=2)
