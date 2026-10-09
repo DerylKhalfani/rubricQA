@@ -17,3 +17,25 @@
     - Use logging
     - create more detailed metadata for the json file output by model
     - make the model to have grounded answer e.g. explicitly state which turn in the reasoning for their stance on their verdict.
+
+# 5 October 2026
+- Building the comparison.py
+- load the golden and model dataset into a dataframe then build the script to compare the result
+- Problems encountered:
+    -
+- Reminder:
+    -
+
+# 6 October 2026
+- 
+- Problems encountered:
+    -
+- Reminder:
+    -
+
+# 7 October 2026
+- 
+- Problems encountered:
+    -
+- Reminder:
+    -

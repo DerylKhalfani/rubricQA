@@ -46,7 +46,7 @@ def load_label(LABELS_PATH: str) -> dict[dict[dict]]:
     return grouping_label
 
 
-def load_conversation(RAW_PATH: str, convo_id: int):
+def load_conversation(RAW_PATH: str, convo_id: int) -> tuple[str, str, str]:
     # loading the conversation from raw file
     with open(RAW_PATH) as f:
         raw_data = json.load(f)
@@ -74,7 +74,7 @@ def load_conversation(RAW_PATH: str, convo_id: int):
         raise ValueError(f"{convo_id} convo id is not found")
 
 
-def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str):
+def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str) -> str:
 
     key = guideline_key(flow,subflow)
     if key is None:
