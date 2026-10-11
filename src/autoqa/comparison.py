@@ -1,13 +1,19 @@
 import json 
 import pandas as pd
+import numpy as np
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score
 from pathlib import Path
 
 from autoqa.helper import load_label
 
 # Grade v.0
+comparison_date = "2026-10-04_18-42-35.csv"
+
 ROOT = Path(__file__).resolve().parents[2]
 LABELS_PATH = ROOT / "data" / "golden" / "labels_v0.1.jsonl"
 OUTPUT_PATH = ROOT / "data" / "model" / "output"
+COMPARE_PATH = ROOT / "data" / "csv" / f"comparedf_{comparison_date}"
 
 ### Extract data of golden datasets
 label_data: dict[dict[dict]] = load_label(LABELS_PATH)
@@ -19,7 +25,7 @@ with open(f"{OUTPUT_PATH}/2026-10-04_18-42-35.json", "r") as f:
     model_data = original_model_data["results"]
 
 
-### COMPARISON PIPELINE
+### DATASET TO DATAFRAME
 
 def load_dataset_to_dataframe(model_data: list[dict[dict[dict]]], label_data: dict[dict[dict]]):
 
@@ -99,7 +105,33 @@ def load_dataset_to_dataframe(model_data: list[dict[dict[dict]]], label_data: di
     return pd.DataFrame(compare_df)
 
 
-compare_df = load_dataset_to_dataframe(model_data, label_data)
+# compare_df = load_dataset_to_dataframe(model_data, label_data)
 
-### load to csv
-compare_df.to_csv("data/csv/comparedf_2026-10-04_18-42-35.csv", index=False)
+# ### load to csv
+# compare_df.to_csv("data/csv/comparedf_2026-10-04_18-42-35.csv", index=False)
+
+### COMPARE
+loaded_compare_df = pd.read_csv(COMPARE_PATH)
+
+CRITERIA = ['identity_verified',
+       'policy_followed', 'outcome_communicated',
+       'bad_news_handled', 'closing_check',
+       'respectful_tone',]
+
+results = []
+
+for criterion in CRITERIA:
+    y_true = loaded_compare_df[f"gd_{criterion}_verdict"]
+    y_pred = loaded_compare_df[f"md_{criterion}_verdict"]
+
+    results.append({
+        "criterion": criterion,
+        "accuracy": accuracy_score(y_true, y_pred),
+        "precision": precision_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
+        "recall": recall_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
+    })
+
+metrics_df = pd.DataFrame(results)
+print(metrics_df.to_string())
+
+
