@@ -39,3 +39,10 @@
     -
 - Reminder:
     -
+
+# 12 October 2026
+- Created comparison script from extracting data from model output to dataframe then loading it to have comparison between golden label set vs model
+- Problems encountered:
+    -
+- Reminder:
+    - iterrows() to iterate rows in dataframe
