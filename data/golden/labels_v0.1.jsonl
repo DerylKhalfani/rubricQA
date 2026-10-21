@@ -46,3 +46,9 @@
 {"convo_id": 9575, "criterion": "bad_news_handled", "verdict": "NOT_APPLICABLE", "reason": "agent did not give an unfavourable result", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-20T22:08:16+00:00"}
 {"convo_id": 9575, "criterion": "closing_check", "verdict": "PASS", "reason": "turn 34, agent asked for anything else.", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-20T22:08:16+00:00"}
 {"convo_id": 9575, "criterion": "respectful_tone", "verdict": "FAIL", "reason": "turn 8 making a joke about a diet or weight joke (risky)", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-20T22:08:16+00:00"}
+{"convo_id": 10010, "criterion": "identity_verified", "verdict": "PASS", "reason": "turn 8 asked for the full name", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
+{"convo_id": 10010, "criterion": "policy_followed", "verdict": "NOT_APPLICABLE", "reason": "not applicable", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
+{"convo_id": 10010, "criterion": "outcome_communicated", "verdict": "PASS", "reason": "turn 13 agent did the action", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
+{"convo_id": 10010, "criterion": "bad_news_handled", "verdict": "NOT_APPLICABLE", "reason": "not applicable", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
+{"convo_id": 10010, "criterion": "closing_check", "verdict": "PASS", "reason": "turn 19, agent asked", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
+{"convo_id": 10010, "criterion": "respectful_tone", "verdict": "PASS", "reason": "", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
