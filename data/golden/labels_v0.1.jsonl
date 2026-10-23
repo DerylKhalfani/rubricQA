@@ -52,3 +52,9 @@
 {"convo_id": 10010, "criterion": "bad_news_handled", "verdict": "NOT_APPLICABLE", "reason": "not applicable", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
 {"convo_id": 10010, "criterion": "closing_check", "verdict": "PASS", "reason": "turn 19, agent asked", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
 {"convo_id": 10010, "criterion": "respectful_tone", "verdict": "PASS", "reason": "", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-21T20:07:46+00:00"}
+{"convo_id": 3061, "criterion": "identity_verified", "verdict": "PASS", "reason": "turn 2 agent asked and turn 4 for verification", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-23T22:24:00+00:00"}
+{"convo_id": 3061, "criterion": "policy_followed", "verdict": "NOT_APPLICABLE", "reason": "not applicable", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-23T22:24:00+00:00"}
+{"convo_id": 3061, "criterion": "outcome_communicated", "verdict": "PASS", "reason": "turn 19 agent did the action smoothly", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-23T22:24:00+00:00"}
+{"convo_id": 3061, "criterion": "bad_news_handled", "verdict": "NOT_APPLICABLE", "reason": "not applicable", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-23T22:24:00+00:00"}
+{"convo_id": 3061, "criterion": "closing_check", "verdict": "PASS", "reason": "turn 19 agent also asked what can he help", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-23T22:24:00+00:00"}
+{"convo_id": 3061, "criterion": "respectful_tone", "verdict": "PASS", "reason": "", "unsure": false, "rubric_version": "v0.1", "pass_no": 1, "labeled_at": "2026-10-23T22:24:00+00:00"}
