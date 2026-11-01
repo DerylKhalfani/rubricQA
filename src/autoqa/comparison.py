@@ -8,25 +8,14 @@ from pathlib import Path
 from autoqa.helper import load_label
 
 # Grade v.0
-comparison_date = "2026-10-04_18-42-35.csv"
+comparison_date = "2026-10-04_18-42-35"
 
 ROOT = Path(__file__).resolve().parents[2]
 LABELS_PATH = ROOT / "data" / "golden" / "labels_v0.1.jsonl"
 OUTPUT_PATH = ROOT / "data" / "model" / "output"
 COMPARE_PATH = ROOT / "data" / "csv" / f"comparedf_{comparison_date}"
 
-### Extract data of golden datasets
-label_data: dict[dict[dict]] = load_label(LABELS_PATH)
-
-
-### Extract data of model output data
-with open(f"{OUTPUT_PATH}/2026-10-04_18-42-35.json", "r") as f:
-    original_model_data = json.load(f)
-    model_data = original_model_data["results"]
-
-
 ### DATASET TO DATAFRAME
-
 def load_dataset_to_dataframe(model_data: list[dict[dict[dict]]], label_data: dict[dict[dict]]):
 
     compare_df = []
@@ -110,28 +99,31 @@ def load_dataset_to_dataframe(model_data: list[dict[dict[dict]]], label_data: di
 # ### load to csv
 # compare_df.to_csv("data/csv/comparedf_2026-10-04_18-42-35.csv", index=False)
 
+
 ### COMPARE
-loaded_compare_df = pd.read_csv(COMPARE_PATH)
+def load_compare(COMPARE_PATH: str) -> pd.DataFrame:
+    loaded_compare_df = pd.read_csv(f"{COMPARE_PATH}.csv")
 
-CRITERIA = ['identity_verified',
-       'policy_followed', 'outcome_communicated',
-       'bad_news_handled', 'closing_check',
-       'respectful_tone',]
+    CRITERIA = ['identity_verified',
+        'policy_followed', 'outcome_communicated',
+        'bad_news_handled', 'closing_check',
+        'respectful_tone',]
 
-results = []
+    results = []
 
-for criterion in CRITERIA:
-    y_true = loaded_compare_df[f"gd_{criterion}_verdict"]
-    y_pred = loaded_compare_df[f"md_{criterion}_verdict"]
+    for criterion in CRITERIA:
+        y_true = loaded_compare_df[f"gd_{criterion}_verdict"]
+        y_pred = loaded_compare_df[f"md_{criterion}_verdict"]
 
-    results.append({
-        "criterion": criterion,
-        "accuracy": accuracy_score(y_true, y_pred),
-        "precision": precision_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
-        "recall": recall_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
-    })
+        results.append({
+            "criterion": criterion,
+            "accuracy": accuracy_score(y_true, y_pred),
+            "precision": precision_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
+            "recall": recall_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
+        })
 
-metrics_df = pd.DataFrame(results)
-print(metrics_df.to_string())
+    metrics_df = pd.DataFrame(results)
+
+    return metrics_df
 
 

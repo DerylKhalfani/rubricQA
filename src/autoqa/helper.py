@@ -11,6 +11,9 @@ RUBRIC_PATH = ROOT / "rubric.md"
 GUIDELINES_PATH = ROOT / "data" / "guidelines.json"
 
 def load_label(LABELS_PATH: str) -> dict[dict[dict]]:
+    """
+    Load the golden datasets and extract each label from the golden datasets
+    """
     # Loading the golden label
     with open(LABELS_PATH) as f:
         label_data = [json.loads(line) for line in f if line.strip()]
@@ -47,6 +50,11 @@ def load_label(LABELS_PATH: str) -> dict[dict[dict]]:
 
 
 def load_conversation(RAW_PATH: str, convo_id: int) -> tuple[str, str, str]:
+    """
+    load conversation from the original abcd dataset. Which takes the conversation
+    and its flow and subflow genre.
+    """
+
     # loading the conversation from raw file
     with open(RAW_PATH) as f:
         raw_data = json.load(f)
@@ -118,7 +126,7 @@ def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str) -> str:
     return actions_instructions_prompt
 
 
-def load_rubric() -> tuple[str, list[dict]]:
+def load_rubric(RUBRIC_PATH: Path) -> tuple[str, list[dict]]:
     text = RUBRIC_PATH.read_text()
     m = re.search(r"^# .*?(v\d+(?:\.\d+)*)\s*$", text, re.M)
     if not m:
@@ -194,7 +202,7 @@ if __name__ == "__main__":
     # print(test1[0])
     # print("\n")
 
-    _, rubric = load_rubric()
+    _, rubric = load_rubric(RUBRIC_PATH)
 
     prompt = load_input_prompt(conversation, guideline, rubric)
     print(prompt)

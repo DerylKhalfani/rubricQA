@@ -1,5 +1,3 @@
-
-
 model_prompt_v0 = """
 I want you to act as a judge of another customer service agent on whether did they pass a certain rubric
 based off on a conversation they have with a customer. You have to answer all rubrics criterion and check if

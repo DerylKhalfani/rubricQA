@@ -26,23 +26,14 @@
 - Reminder:
     -
 
-# 6 October 2026
-- 
-- Problems encountered:
-    -
-- Reminder:
-    -
-
-# 7 October 2026
-- 
-- Problems encountered:
-    -
-- Reminder:
-    -
-
 # 12 October 2026
 - Created comparison script from extracting data from model output to dataframe then loading it to have comparison between golden label set vs model
 - Problems encountered:
     -
 - Reminder:
     - iterrows() to iterate rows in dataframe
+
+# 30 October 2026
+- Plan create the main script to connect the whole pipeline
+- Add langsmith tracing
+- Work on adding more datasets

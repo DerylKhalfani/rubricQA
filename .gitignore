@@ -12,5 +12,6 @@ docs
 .venv
 CONTEXT.md
 
+JOB_DESCRIPTION.md
 data/abcd_v1.1.json
 data/abcd_pretty.json
