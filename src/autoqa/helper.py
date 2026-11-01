@@ -1,16 +1,19 @@
 import json
 import re
 from pathlib import Path
-from autoqa.guidelines import GUIDELINES_PATH, SUBFLOW_MAP, guideline_key
+from autoqa.guidelines import GUIDELINES_PATH, guideline_key
 
 ### Grade v.0
 ROOT = Path(__file__).resolve().parents[2]
 LABELS_PATH = ROOT / "data" / "golden" / "labels_v0.1.jsonl"
 RAW_PATH = ROOT / "data" / "abcd_pretty.json"
 RUBRIC_PATH = ROOT / "rubric.md"
-
+GUIDELINES_PATH = ROOT / "data" / "guidelines.json"
 
 def load_label(LABELS_PATH: str) -> dict[dict[dict]]:
+    """
+    Load the golden datasets and extract each label from the golden datasets
+    """
     # Loading the golden label
     with open(LABELS_PATH) as f:
         label_data = [json.loads(line) for line in f if line.strip()]
@@ -46,7 +49,12 @@ def load_label(LABELS_PATH: str) -> dict[dict[dict]]:
     return grouping_label
 
 
-def load_conversation(RAW_PATH: str, convo_id: int):
+def load_conversation(RAW_PATH: str, convo_id: int) -> tuple[str, str, str]:
+    """
+    load conversation from the original abcd dataset. Which takes the conversation
+    and its flow and subflow genre.
+    """
+
     # loading the conversation from raw file
     with open(RAW_PATH) as f:
         raw_data = json.load(f)
@@ -61,7 +69,7 @@ def load_conversation(RAW_PATH: str, convo_id: int):
             for convo in set_value:
 
                 if convo["convo_id"] == convo_id:
-                    conversation += f"==Conversation: {convo_id}==\n"
+                    conversation += f"==== Conversation: {convo_id} ====\n"
 
                     for speaker, text in convo["original"]:
                         conversation += f"{speaker}: {text}\n"
@@ -74,7 +82,7 @@ def load_conversation(RAW_PATH: str, convo_id: int):
         raise ValueError(f"{convo_id} convo id is not found")
 
 
-def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str):
+def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str) -> str:
 
     key = guideline_key(flow,subflow)
     if key is None:
@@ -91,7 +99,7 @@ def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str):
     # print(actions)
     # print("\n")
     # print(instructions)
-    actions_instructions_prompt = f"== Guidelines: {flow} / {subflow} ==\n"
+    actions_instructions_prompt = f"==== Guidelines: {flow} / {subflow} ====\n"
     instruction_prompt = "\n".join(instructions)
     actions_instructions_prompt += f"{instruction_prompt}\n\nSteps:\n"
 
@@ -118,7 +126,7 @@ def load_guideline(GUIDELINES_PATH: str, flow: str, subflow: str):
     return actions_instructions_prompt
 
 
-def load_rubric() -> tuple[str, list[dict]]:
+def load_rubric(RUBRIC_PATH: Path) -> tuple[str, list[dict]]:
     text = RUBRIC_PATH.read_text()
     m = re.search(r"^# .*?(v\d+(?:\.\d+)*)\s*$", text, re.M)
     if not m:
@@ -143,16 +151,58 @@ def load_rubric() -> tuple[str, list[dict]]:
     return m.group(1), criteria
 
 
-# conversation, flow, subflow = load_conversation(RAW_PATH, 6689)
+RUBRIC_LABELS = {
+    "name": "Criterion",
+    "question": "Question",
+    "pass": "Pass",
+    "fail": "Fail",
+    "na": "N/A",
+    "note": "Note",
+}
 
-# print(conversation)
-# print(flow)
-# print(subflow)
 
-# actions_instructions_prompt = load_guideline(GUIDELINES_PATH, flow, subflow)
+def load_rubric_into_text(rubrics: list[dict]) -> str:
 
-# print(actions_instructions_prompt)
-test, test1 = load_rubric()
+    rubric_text = "==== Rubric ====\n"
 
-print(test1[0])
-print("\n")
+
+    for rubric in rubrics:
+        for key, text in rubric.items():
+
+            # skip empty fields, e.g. criteria without a note
+            if text == "":
+                continue
+
+            rubric_text += f"{RUBRIC_LABELS[key]}: {text}\n"
+        rubric_text += "\n"
+
+    return rubric_text
+
+
+def load_input_prompt(conversation: str, guideline: str, rubric: str):
+
+    input_prompt = f"{conversation}\n{guideline}\n{load_rubric_into_text(rubric)}"
+
+    return input_prompt
+
+
+if __name__ == "__main__":
+
+    conversation, flow, subflow = load_conversation(RAW_PATH, 6689)
+
+    # print(conversation)
+    # print(flow)
+    # print(subflow)
+
+    guideline = load_guideline(GUIDELINES_PATH, flow, subflow)
+
+    # print(actions_instructions_prompt)
+    # test, test1 = load_rubric()
+
+    # print(test1[0])
+    # print("\n")
+
+    _, rubric = load_rubric(RUBRIC_PATH)
+
+    prompt = load_input_prompt(conversation, guideline, rubric)
+    print(prompt)

@@ -4,7 +4,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 RUBRIC_PATH = ROOT / "rubric.md"
 
-
 def load_rubric() -> tuple[str, list[dict]]:
     text = RUBRIC_PATH.read_text()
     m = re.search(r"^# .*?(v\d+(?:\.\d+)*)\s*$", text, re.M)

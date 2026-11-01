@@ -18,7 +18,8 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from autoqa.guidelines import SUBFLOW_MAP, load_guidelines, guideline_key
+from autoqa.guidelines import SUBFLOW_MAP, guideline_key
+from autoqa.helper import load_guideline
 
 ROOT = Path(__file__).resolve().parents[2]
 ABCD_PATH = ROOT / "data" / "abcd_v1.1.json"
@@ -63,6 +64,10 @@ POLICY_SUBFLOWS = {
 
 
 # ---------------------------------------------------------------- sampling
+def load_guidelines() -> dict:
+    with open(GUIDELINES_PATH) as f:
+        return json.load(f)
+
 
 def build_sample(guidelines: dict) -> list[dict]:
     for flow, subflow in list(SUBFLOW_MAP.values()) + list(POLICY_SUBFLOWS):
