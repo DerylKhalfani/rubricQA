@@ -37,3 +37,8 @@
 - Plan create the main script to connect the whole pipeline
 - Add langsmith tracing
 - Work on adding more datasets
+
+# 1 November 2026
+- Created the main pipeline
+- However, to make things more modular, i think it is better to divide main into
+  separate steps (functions)
