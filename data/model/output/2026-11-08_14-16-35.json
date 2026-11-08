@@ -1,0 +1,297 @@
+{
+  "metadata": {
+    "prompt_version": "model_prompt_v0"
+  },
+  "results": [
+    {
+      "convo_id": 6689,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "The agent collected 3 of 4 identity items (full name, zip, phone) and verified identity before disclosing the username."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Follows the username recovery policy by verifying identity prior to disclosure; no other policy-based conditions apply here."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "The agent clearly stated the result: the username is jwu1."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavorable outcome occurred."
+        },
+        "closing_check": {
+          "verdict": "FAIL",
+          "reason": "The agent did not ask if the customer needed anything else after fulfilling the request."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "The tone was courteous and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 3297,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "The agent collected full name and username and pulled up the Albert Sanders account before proceeding."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Handled promo-code issue per flow: checked system, identified problem, and issued a new 20% code."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Explained actions and provided the new promo code; confirmed it should fix the issue."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No negative outcome or refusal occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if customer needed anything else after resolving the issue."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite, apologetic, and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 4502,
+      "grade": {
+        "identity_verified": {
+          "verdict": "FAIL",
+          "reason": "No identity verification performed before troubleshooting."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Followed prescribed steps (Try Again, Log Out/In). No identity verification required; issue resolved."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "The agent acknowledged the outcome and offered further assistance."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No bad news or refusals occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if anything else needed after resolution."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite, empathetic, and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 465,
+      "grade": {
+        "identity_verified": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No identity verification step exists for timing FAQ; not needed in this flow."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Provided the timing from FAQ and offered further help."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Clear result communicated: fall collection starts October 3rd."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No bad news or refusals occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Ask if the customer needed anything else after answering."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 1063,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "Customer provided account ID and order ID; identity verification initiated before sharing account status."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Account pulled up, identity verification attempted, status reported, and payment link sent per flow."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Told due amount $49, due date today, and that a payment link was sent."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable outcome occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if anything else was needed after main action."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite and professional throughout, minor typos didn\u2019t hinder respect."
+        }
+      }
+    },
+    {
+      "convo_id": 2391,
+      "grade": {
+        "identity_verified": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No identity verification step exists for jacket FAQ; no account details were needed."
+        },
+        "policy_followed": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No policy rules based on membership/status applied to this jacket inquiry."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Provided clear hood-removal info and confirmed understanding."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable outcome or refusals occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if the customer needed anything else after answering."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite, apologetic when needed, and courteous throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 4047,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "Account retrieved; identity verified with name, ZIP, phone, PIN."
+        },
+        "policy_followed": {
+          "verdict": "FAIL",
+          "reason": "Shipping status not checked before payment-method change."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Told customer payment method updated."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "NOT_APPLICABLE: no bad news."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if more help needed."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite and professional."
+        }
+      }
+    },
+    {
+      "convo_id": 9575,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "Collected full name, email, and order ID; pulled up Chloe Zhang's account and proceeded, fulfilling verification before action."
+        },
+        "policy_followed": {
+          "verdict": "FAIL",
+          "reason": "Date 1-11-20 falls outside 6-month window; silver policy allows return only with receipt or original packaging if older. Agent proceeded without confirming receipt/packaging."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Explained steps, shipping label option, and updated the order; result communicated clearly."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable outcome or denial occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if customer needed anything else after handling."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Maintained polite and professional tone throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 10010,
+      "grade": {
+        "identity_verified": {
+          "verdict": "FAIL",
+          "reason": "Account opened by name only; no additional verification steps or identity items were checked."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Reinstated service after confirming issue and recording the reason; followed the subflow steps."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Told the customer the account was updated and asked them to verify on their end."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable outcome occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if they needed anything else after handling the main request."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite and professional throughout."
+        }
+      }
+    },
+    {
+      "convo_id": 3061,
+      "grade": {
+        "identity_verified": {
+          "verdict": "PASS",
+          "reason": "Account pulled up; collected username, email, and order ID; verified before change."
+        },
+        "policy_followed": {
+          "verdict": "PASS",
+          "reason": "Used status check and validation flow; updated order accordingly."
+        },
+        "outcome_communicated": {
+          "verdict": "PASS",
+          "reason": "Informed customer that the order was updated."
+        },
+        "bad_news_handled": {
+          "verdict": "NOT_APPLICABLE",
+          "reason": "No unfavourable result occurred."
+        },
+        "closing_check": {
+          "verdict": "PASS",
+          "reason": "Asked if they needed anything else."
+        },
+        "respectful_tone": {
+          "verdict": "PASS",
+          "reason": "Polite and professional throughout."
+        }
+      }
+    }
+  ]
+}

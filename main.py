@@ -67,7 +67,11 @@ def main() -> None:
     run_id = latest_run()
 
     if args.grade:
+<<<<<<< HEAD
         grade()
+=======
+        run_id = grade()
+>>>>>>> d9c65c5 (Separated main script into three separate steps grade, build_csv, and compare)
     
     if args.build:
         build_csv(run_id)
@@ -76,7 +80,11 @@ def main() -> None:
         compare(run_id)
     
     if args.all:
+<<<<<<< HEAD
         grade()
+=======
+        run_id = grade()
+>>>>>>> d9c65c5 (Separated main script into three separate steps grade, build_csv, and compare)
         build_csv(run_id)
         compare(run_id)
 
