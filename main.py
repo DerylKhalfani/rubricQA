@@ -7,6 +7,9 @@ from autoqa.grader import model_grading
 from autoqa.comparison import load_dataset_to_dataframe, load_compare
 from autoqa.helper import load_label
 
+from langsmith import Client
+from langsmith.utils import LangSmithAuthError
+
 ### Grade v.0
 ROOT = Path(__file__).resolve().parent
 LABELS_PATH = ROOT / "data" / "golden" / "labels_v0.1.jsonl"
@@ -17,6 +20,14 @@ OUTPUT_PATH = ROOT / "data" / "model" / "output"
 CSV_PATH = ROOT / "data" / "csv"
 
 logging.basicConfig(level=logging.INFO)
+
+
+def check_langsmith() -> None:
+    try:
+        list(Client().list_projects(limit=1))
+        print("Langsmith passed")
+    except LangSmithAuthError as e:
+        raise SystemExit(f"LangSmith auth failed, not running: {e}")
 
 
 def latest_run() -> str:
@@ -64,14 +75,12 @@ def main() -> None:
     
     args = parser.parse_args()
 
+    check_langsmith()
+
     run_id = latest_run()
 
     if args.grade:
-<<<<<<< HEAD
-        grade()
-=======
         run_id = grade()
->>>>>>> d9c65c5 (Separated main script into three separate steps grade, build_csv, and compare)
     
     if args.build:
         build_csv(run_id)
@@ -80,11 +89,7 @@ def main() -> None:
         compare(run_id)
     
     if args.all:
-<<<<<<< HEAD
-        grade()
-=======
         run_id = grade()
->>>>>>> d9c65c5 (Separated main script into three separate steps grade, build_csv, and compare)
         build_csv(run_id)
         compare(run_id)
 

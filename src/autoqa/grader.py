@@ -1,17 +1,20 @@
 import os
 import json
 
-from openai import OpenAI
+import openai
 from dotenv import load_dotenv
 from datetime import datetime
+from langsmith import traceable
+from langsmith.wrappers import wrap_openai
 
 from autoqa.helper import load_conversation, load_guideline, load_label, load_rubric, load_input_prompt
 from autoqa.prompt import model_prompt_v0
 from typing import TypedDict, Literal
 from pydantic import ConfigDict, with_config
 
+
 load_dotenv()
-client = OpenAI()
+client = wrap_openai(openai.Client())
 
 # One criterion
 @with_config(ConfigDict(extra="forbid"))
@@ -30,6 +33,7 @@ class CriterionOutput(TypedDict):
     closing_check: ResponseOutput
     respectful_tone: ResponseOutput
 
+@traceable(name="Model Grading Pipeline")
 def model_grading(LABELS_PATH, RAW_PATH, RUBRIC_PATH, GUIDELINES_PATH, OUTPUT_PATH):
     """
     Upload a graded file to be compared to the golden dataset.
