@@ -33,7 +33,35 @@ class CriterionOutput(TypedDict):
     closing_check: ResponseOutput
     respectful_tone: ResponseOutput
 
+
 @traceable(name="Model Grading Pipeline")
+def grading_per_conversation(RAW_PATH, convo_id, GUIDELINES_PATH, RUBRIC_PATH):
+    # load conversation from conversation id
+    conversation, flow, subflow = load_conversation(RAW_PATH=RAW_PATH, convo_id=convo_id)
+
+    # load guidelines from conversation id
+    guideline = load_guideline(GUIDELINES_PATH=GUIDELINES_PATH, flow=flow, subflow=subflow)
+
+    # load rubric
+    _, criteria = load_rubric(RUBRIC_PATH=RUBRIC_PATH)
+
+    input_prompt = load_input_prompt(conversation, guideline, criteria)
+
+    model_prompt = model_prompt_v0
+
+    # Calling the model
+    response = client.responses.parse(
+        model=os.environ["OPENAI_MODEL"],
+        input=input_prompt,
+        instructions=model_prompt,
+        text_format=CriterionOutput
+    )
+
+    output = response.output_parsed
+
+    return output
+
+
 def model_grading(LABELS_PATH, RAW_PATH, RUBRIC_PATH, GUIDELINES_PATH, OUTPUT_PATH):
     """
     Upload a graded file to be compared to the golden dataset.
@@ -47,28 +75,7 @@ def model_grading(LABELS_PATH, RAW_PATH, RUBRIC_PATH, GUIDELINES_PATH, OUTPUT_PA
     # looping conversation id 
     for convo_id in grouping_label:
 
-        # load conversation from conversation id
-        conversation, flow, subflow = load_conversation(RAW_PATH=RAW_PATH, convo_id=convo_id)
-
-        # load guidelines from conversation id
-        guideline = load_guideline(GUIDELINES_PATH=GUIDELINES_PATH, flow=flow, subflow=subflow)
-
-        # load rubric
-        _, criteria = load_rubric(RUBRIC_PATH=RUBRIC_PATH)
-
-        input_prompt = load_input_prompt(conversation, guideline, criteria)
-
-        model_prompt = model_prompt_v0
-
-        # Calling the model
-        response = client.responses.parse(
-            model=os.environ["OPENAI_MODEL"],
-            input=input_prompt,
-            instructions=model_prompt,
-            text_format=CriterionOutput
-        )
-
-        output = response.output_parsed
+        output = grading_per_conversation(RAW_PATH=RAW_PATH, convo_id=convo_id, GUIDELINES_PATH=GUIDELINES_PATH, RUBRIC_PATH=RUBRIC_PATH)
 
         # include metadata later
         response_list.append({"convo_id": convo_id, "grade": output})
