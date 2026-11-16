@@ -42,3 +42,9 @@
 - Created the main pipeline
 - However, to make things more modular, i think it is better to divide main into
   separate steps (functions)
+
+# 12 Novermber 2026
+- Judge the Judge: Building LLM Evaluators That Actually Work with GEPA
+- LLM as a judge and prompt optimizer
+- https://youtu.be/X4dEHRzBLmc?si=ZZEXqxrhQlwAF-74
+- github repo: https://github.com/Agenta-AI/judge-the-judge-talk-2026.git
