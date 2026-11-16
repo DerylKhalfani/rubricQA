@@ -58,6 +58,14 @@ def load_dataset_to_dataframe(model_data: list[dict[dict[dict]]], label_data: di
         md_closing_check_reason = convo_verdict['grade']['closing_check']['reason']
         md_respectful_tone_reason = convo_verdict['grade']['respectful_tone']['reason']
 
+        ### model_dataset evidence
+        md_identity_verified_evidence = convo_verdict['grade']['identity_verified']['evidence']
+        md_policy_followed_evidence = convo_verdict['grade']['policy_followed']['evidence']
+        md_outcome_communicated_evidence = convo_verdict['grade']['outcome_communicated']['evidence']
+        md_bad_news_handled_evidence = convo_verdict['grade']['bad_news_handled']['evidence']
+        md_closing_check_evidence = convo_verdict['grade']['closing_check']['evidence']
+        md_respectful_tone_evidence = convo_verdict['grade']['respectful_tone']['evidence']
+
 
         ## buidling the dataframe
         compare_df.append({
@@ -89,6 +97,13 @@ def load_dataset_to_dataframe(model_data: list[dict[dict[dict]]], label_data: di
             "md_bad_news_handled_reason": md_bad_news_handled_reason,
             "md_closing_check_reason": md_closing_check_reason,
             "md_respectful_tone_reason": md_respectful_tone_reason,
+
+            "md_identity_verified_evidence": md_identity_verified_evidence,
+            "md_policy_followed_evidence": md_policy_followed_evidence,
+            "md_outcome_communicated_evidence": md_outcome_communicated_evidence,
+            "md_bad_news_handled_evidence": md_bad_news_handled_evidence,
+            "md_closing_check_evidence": md_closing_check_evidence,
+            "md_respectful_tone_evidence": md_respectful_tone_evidence,
         })
 
     return pd.DataFrame(compare_df)
@@ -118,8 +133,8 @@ def load_compare(COMPARE_PATH: str) -> pd.DataFrame:
         results.append({
             "criterion": criterion,
             "accuracy": accuracy_score(y_true, y_pred),
-            "precision": precision_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
-            "recall": recall_score(y_true, y_pred, average='macro', labels=["PASS", "FAIL", "NOT_APPLICABLE"], zero_division=np.nan),
+            "precision": precision_score(y_true, y_pred, average='macro', labels=["FAIL"], zero_division=np.nan),
+            "recall": recall_score(y_true, y_pred, average='macro', labels=["FAIL"], zero_division=np.nan),
         })
 
     metrics_df = pd.DataFrame(results)

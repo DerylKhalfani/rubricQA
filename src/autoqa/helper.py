@@ -71,8 +71,8 @@ def load_conversation(RAW_PATH: str, convo_id: int) -> tuple[str, str, str]:
                 if convo["convo_id"] == convo_id:
                     conversation += f"==== Conversation: {convo_id} ====\n"
 
-                    for speaker, text in convo["original"]:
-                        conversation += f"{speaker}: {text}\n"
+                    for index, (speaker, text) in enumerate(convo["original"]):
+                        conversation += f"turn {index} {speaker}: {text}\n"
 
                     flow = convo["scenario"]["flow"]
                     subflow = convo["scenario"]["subflow"]
